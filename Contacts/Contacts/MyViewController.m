@@ -7,7 +7,6 @@
 //
 
 #import "MyViewController.h"
-#import "MBProgressHUD+XMG.h"
 
 //默认账号
 #define kAccount @"123456"
@@ -85,13 +84,11 @@ static NSString *autoKey=@"antoIn";
 //点击登录按钮时调用
 - (IBAction)buttonAction:(id)sender {
     
-      [MBProgressHUD showMessage:@"正在登录ing..."];//登录状态屏幕中间出现提示信息
     
 // 模拟网络延迟
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-          [MBProgressHUD hideHUD];//登录状态屏幕不可点击
-        
+
         if ([_number.text isEqualToString:kAccount]&&[_passWord.text isEqualToString:kPassWord]) {//输入正确
             
           //存储数据
@@ -108,7 +105,7 @@ static NSString *autoKey=@"antoIn";
             
         }else{
             
-             [MBProgressHUD showError:@"账号或者密码错误"];
+            
         }
     });
    
